@@ -1,0 +1,233 @@
+
+/* -------------------------------------Global Reset & Variables-------------------------------- */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --font-family: 'Poppins', sans-serif;
+    --bg-gradient: linear-gradient(to bottom right, #ffa69e, #ff686b);
+    --container-bg: #ffffff;
+    --text-color: #333333;
+    --primary-color: #ff686b;
+    --primary-hover: #ff3b2e;
+    --input-border: #ccc;
+    --focus-shadow: rgba(255, 104, 107, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* --------------------------------------Body & Overall Layout----------------------------------- */
+  body {
+    font-family: var(--font-family);
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  /* ------------------------------for forms & result pages------------------------------ */
+  .container {
+    background: var(--container-bg);
+    max-width: 450px;
+    width: 90%; 
+    padding: 40px;
+    margin: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+    position: relative;
+  }
+  
+  /* Headings */
+  .container h2 {
+    margin-bottom: 1rem; 
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  
+  /* Paragraphs*/
+  .container p {
+    margin: 0.5rem 0; 
+  }
+  
+  /* --------------------------------Form Elements-------------------------------- */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--input-border);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--focus-shadow);
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background: var(--primary-hover);
+  }
+  
+  /* ------------------------------------Links-------------------------------------- */
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  a:hover {
+    color: var(--primary-hover);
+  }
+  
+  /* --------------------------------Messages (error, success)---------------------------- */
+  .error,
+  .success {
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+  
+  .error {
+    color: #d9534f;
+  }
+  
+  .success {
+    color: #5cb85c;
+  }
+  
+  /* ------------------------------------Speedometer & Dashboard----------------------------------- */
+  #speedometer {
+    display: block;
+    margin: 20px auto;
+    background: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 104, 107, 0.2);
+  }
+  
+  .dashboard-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* -------------------------------Loading Overlay & Spinner (Result Page)--------------------------------- */
+  #loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Spinner styles */
+  .loader {
+    border: 10px solid #f3f3f3; /* Light grey */
+    border-top: 10px solid var(--primary-color);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Spin keyframe */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* ---------------------------------Animations------------------------------------ */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 30px 20px;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+  
+/* Result Label */
+.profile-result {
+    margin: 1rem 0; 
+  }
+  
+  .profile-status {
+    display: inline-block;
+    font-size: 1.8rem;      
+    font-weight: 700;       
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    color: #fff;
+    animation: pop 0.7s ease-out; 
+  }
+  
+  .fake-status {
+    background-color: #ff686b; 
+  }
+  
+  .real-status {
+    background-color: #00c853; 
+  }
+  
+  /* Simple pop animation */
+  @keyframes pop {
+    0% {
+      transform: scale(0.6);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  

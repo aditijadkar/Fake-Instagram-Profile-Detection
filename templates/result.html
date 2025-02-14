@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Analysis</title>
+    <title>Profile Analysis</title>
+    <!-- Your main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Speedometer script -->
+    <script src="{{ url_for('static', filename='speedometer.js') }}" defer></script>
+</head>
+<body>
+    <!-- Loading Overlay & Spinner -->
+    <div id="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <div class="container fade-in">
+        
+      <!-- result label -->
+      <div class="profile-result">
+            {% if is_fake %}
+              <span class="profile-status fake-status">FAKE ❌</span>
+            {% else %}
+              <span class="profile-status real-status">REAL ✅</span>
+            {% endif %}
+      </div>
+          
+      <h2>Profile Analysis for @{{ username }}</h2>
+
+      <!-- Speedometer -->
+      <canvas id="speedometer"></canvas>
+
+      <p><strong>Fake Score:</strong> <span id="score-value">{{ score }}</span>%</p>
+      <p><strong>Followers:</strong> {{ insta_data['followers'] }}</p>
+      <p><strong>Following:</strong> {{ insta_data['following'] }}</p>
+      <p><strong>Posts:</strong> {{ insta_data['posts'] }}</p>
+      <p><strong>Private:</strong> {{ insta_data['private'] == 1 and "Yes" or "No" }}</p>
+      <p><strong>Has Profile Pic:</strong> {{ insta_data['profile_pic'] == 1 and "Yes" or "No" }}</p>
+      <p><strong>Bio Length:</strong> {{ insta_data['description_length'] }}</p>
+
+      <p><strong>Profile Type:</strong>
+          {% if is_fake %}
+            <span class="fake-result">Fake ❌</span>
+          {% else %}
+            <span class="real-result">Real ✅</span>
+          {% endif %}
+      </p>
+
+        <a href="{{ url_for('dashboard') }}">Analyze Another Profile</a>
+    </div>
+</body>
+</html>
